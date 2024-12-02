@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'database.apps.DatabaseConfig',
     'orders.apps.OrdersConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'dishes.apps.DishesConfig'
 ]
 
 REST_FRAMEWORK = {
@@ -55,8 +57,8 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3000), # 3000 is DEBUG VALUE, make 30-60 in production
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
