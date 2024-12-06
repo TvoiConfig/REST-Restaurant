@@ -1,9 +1,11 @@
-from django.urls import path
-from dishes.views import DishesView
 
+from dishes.views import DishesViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('dishes', DishesViewSet, basename='dishes')
 
 urlpatterns = [
-    path('', DishesView.as_view(), name='dishes'),
-    path('<int:pk>/', DishesView.as_view(), name='dishes-detail'),
-]
 
+]
+urlpatterns += router.urls
